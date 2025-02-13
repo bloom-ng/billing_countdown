@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Billing | We're Coming Back</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#000031] h-screen overflow-hidden flex flex-col items-center md:px-4 px-6 lg:px-0"> 
+    <div class="mt-6 md:mt-8 lg:mt-12">
+        <img src="billings2 1 (1).png" alt="Logo" class="w-[70%] md:w-full h-auto mx-auto">
+    </div>
+
+    <!-- Text Content -->
+    <div class="flex flex-col items-center text-center"> <!-- Removed flex-1 -->
+        <h1 class="text-white font-lato font-bold text-4xl sm:text-5xl lg:text-[60px] leading-tight mt-4 sm:mt-8 lg:mt-14 px-4">
+            We Are Coming <br class="hidden sm:inline">With A Bang
+        </h1>
+        <p class="text-white font-lato font-normal text-xl sm:text-2xl lg:text-3xl mt-3 sm:mt-4 max-w-2xl px-4">
+            We are working to give you the very best.
+        </p>
+    </div>
+
+    <section class="w-full relative mt-8 sm:mt-12">
+        <!-- Background Image -->
+        <div class="w-full aspect-video sm:aspect-auto sm:h-[50vh]">
+            <img src="image.png" alt="Background" class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Timer Overlay -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <!-- Timer Container -->
+            <div class="border border-white text-white flex flex-row flex-wrap justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 text-center font-lato px-2 py-3 sm:py-4 md:py-6 max-w-6xl mx-auto mb-32 md:mb-48"> <!-- Increased bottom margin -->
+                <!-- Timer elements unchanged -->
+                <div class="px-1 sm:px-2 md:px-3">
+                    <p class="text-2xl md:text-3xl lg:text-4xl font-bold"><span id="days">16</span></p>
+                    <p class="text-lg sm:text-xl md:text-2xl font-normal mt-1">Days</p>
+                </div>
+                <div class="px-1 sm:px-2 md:px-3">
+                    <p class="text-2xl md:text-3xl lg:text-4xl font-bold"><span id="hours">2</span></p>
+                    <p class="text-lg sm:text-xl md:text-2xl font-normal mt-1">Hours</p>
+                </div>
+                <div class="px-1 sm:px-2 md:px-3">
+                    <p class="text-2xl md:text-3xl lg:text-4xl font-bold"><span id="minutes">35</span></p>
+                    <p class="text-lg sm:text-xl md:text-2xl font-normal mt-1">Minutes</p>
+                </div>
+                <div class="px-1 sm:px-2 md:px-3">
+                    <p class="text-2xl md:text-3xl lg:text-4xl font-bold"><span id="seconds">2</span></p>
+                    <p class="text-lg sm:text-xl md:text-2xl font-normal mt-1">Seconds</p>
+                </div>
+            </div>
+
+            <!-- Bottom Image -->
+            <div class="absolute mt-20 w-full">
+                <img src="Mask group.png" alt="Decoration" class="h-auto mx-auto">
+            </div>
+        </div>
+    </section>
+ 
+    <script>
+        // Set a fixed target date (February 28, 2025 at 00:00:00)
+        const targetDate = new Date("2025-02-28T06:00:00").getTime();
+    
+        function updateTimer() {
+            const currentDate = new Date().getTime();
+            const timeDifference = targetDate - currentDate;
+    
+            if (timeDifference <= 0) {
+                // Timer expired, set all values to 0
+                document.getElementById('days').innerHTML = "0";
+                document.getElementById('hours').innerHTML = "0";
+                document.getElementById('minutes').innerHTML = "0";
+                document.getElementById('seconds').innerHTML = "0";
+                return;
+            }
+    
+            // Calculate time units
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+            // Update the DOM elements
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
+        }
+    
+        // Update timer immediately and then every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>    
+</body>
+</html>
